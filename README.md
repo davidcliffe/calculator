@@ -5,7 +5,7 @@ This application performs simple arithmetic such as addition, subtraction, divis
 
 ## 
 
-<img src="images\calculator-screenshot.jpg" alt="Screenshot Missing" height="300">
+<img src="calculator-screenshot.jpg" alt="Screenshot Missing" height="300">
 
 ## Features
 
