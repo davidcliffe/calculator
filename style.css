@@ -1,0 +1,72 @@
+
+body {
+  text-align: center;
+  font-size: 30px;
+}
+
+.button {  
+  justify-content: center; 
+  align-items: center;  
+  border: 2px solid black; 
+  width: 30px; 
+  text-align: center;
+  padding: 5px;  
+  margin: 5px 5px;
+  background-color: #2196F3;
+
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 20px 10px;
+  
+
+}
+.buttons:hover {
+  cursor: pointer;
+}
+
+h2 {
+  border: 2px solid black;
+  min-width: 300px;
+  text-align: right; 
+  margin: auto;
+
+}
+
+.equals {
+  min-width: 4em;
+  background-color: #0acf73;
+  
+}
+
+.display {
+  display: inline-block;
+  justify-content: center;
+  
+}
+
+.display-operator, .display-window {  
+  text-align: center;
+  width: 20px;
+  margin-top: 20px;
+  min-height: 50px;
+}
+
+.oper-button {
+  background-color: #e9da0f;
+
+}
+
+.grid-container {
+  display: grid;   
+  grid-template-columns: auto auto auto;  
+}
+
+.button-cancel {
+  width: 100px;
+  background-color: #f32121;
+  font-size: 25px;
+}
