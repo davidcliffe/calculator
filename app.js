@@ -10,8 +10,6 @@ const num_7 = document.querySelector('.digit-7');
 const num_8 = document.querySelector('.digit-8');
 const num_9 = document.querySelector('.digit-9');
 const screenDisplay = document.querySelector('.display-window');
-//screenDisplay.textContent = '0';
-
 const clearDisplay = document.querySelector('.button-cancel');
 const plusButton = document.querySelector('.plus');
 const minusButton = document.querySelector('.minus');
@@ -19,10 +17,12 @@ const multButton = document.querySelector('.multiply');
 const divideButton = document.querySelector('.divide');
 const equalsButton = document.querySelector('.equals');
 const operDisplay = document.querySelector('.display-operator');
+
 var firstNum = null;
 var secondNum = null;
 var operatorSymbol = '';
 
+//define function to clear display and reset variables
 const clearScreen = function() {
   screenDisplay.textContent = '0';
   operDisplay.textContent = '';
@@ -44,14 +44,15 @@ digitArray.forEach(element => {element.addEventListener('click', function(){
 });
 
 const displayDigit = function(digit) {
+
+  // the branching below covers cases for single and continuous calculations
     if(firstNum === null && operatorSymbol === '' && secondNum === null){     
       if (screenDisplay.textContent === '0'){
         screenDisplay.textContent = digit;
       }  else {
         screenDisplay.textContent = screenDisplay.textContent + digit;
-      }
-      console.log('in first if')
-  
+      }  
+
   } else if (firstNum != null && operatorSymbol === '' && secondNum === null)  { 
       screenDisplay.textContent = digit;
       firstNum = Number(digit);      
@@ -71,7 +72,7 @@ const displayDigit = function(digit) {
     };
 
 
-
+// define array for performing operations on numbers
 operatorArray = [plusButton, minusButton, multButton, divideButton];
 
 operatorArray.forEach(element => {element.addEventListener('click', function(){
@@ -85,33 +86,25 @@ operatorArray.forEach(element => {element.addEventListener('click', function(){
     secondNum = Number(screenDisplay.textContent); 
   } else if (firstNum === null && operatorSymbol === '' && secondNum === null){
     firstNum = Number(screenDisplay.textContent); 
-  } else {console.log('no option')
+  } else {console.log('invalid option')
   }
 
     switch(element.textContent){
       case '+':
         operatorSymbol = '+';  
         operDisplay.textContent = operatorSymbol;
-        //screenDisplay.textContent = '0';
-        console.log(`its a + ${element.textContent}`);
         break;
       case '-':
         operatorSymbol = '-';  
         operDisplay.textContent = operatorSymbol;
-        //screenDisplay.textContent = '0';
-        console.log(`its a - ${element.textContent}`);
         break;
       case 'x':
         operatorSymbol = 'x';  
         operDisplay.textContent = operatorSymbol;
-        //screenDisplay.textContent = '0';
-        console.log(`its a x ${element.textContent}`);
         break;
       case '/':
         operatorSymbol = '/';  
         operDisplay.textContent = operatorSymbol;
-        //screenDisplay.textContent = '0';
-        console.log(`its a / ${element.textContent}`);    
         break;      
      }
   })
@@ -120,6 +113,7 @@ operatorArray.forEach(element => {element.addEventListener('click', function(){
 
 
 equalsButton.addEventListener('click', function(){
+
   //there is a number and operator entered already
   if (firstNum && operatorSymbol && !secondNum) {
       secondNum = Number(screenDisplay.textContent);        
@@ -141,13 +135,11 @@ const calculate = function(){
     case '+': 
       var result = firstNum + secondNum; 
       screenDisplay.textContent = String(result); 
-      console.log(`plus calc complete`);
       firstNum = result;
       break;
     case '-':
       var result = firstNum - secondNum; 
       screenDisplay.textContent = String(result); 
-      console.log(`minus calc complete`);
       firstNum = result;          
       break;
     case 'x':
@@ -156,7 +148,6 @@ const calculate = function(){
           screenDisplay.textContent = result.toFixed(3);      
       } else {screenDisplay.textContent = String(result); 
         } 
-      console.log(`mult calc complete`);
       firstNum = result;          
       break;
     case '/': 
@@ -165,7 +156,6 @@ const calculate = function(){
         screenDisplay.textContent = result.toFixed(3);      
       } else {screenDisplay.textContent = String(result); 
       } 
-      console.log(`divide calc complete`);
       firstNum = result;          
       break;  
   }
